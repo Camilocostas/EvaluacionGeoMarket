@@ -1,61 +1,106 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div align="center">
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# EvaluacionGeoMarket
 
-## About Laravel
+![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=flat-square&logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+![Tailwind](https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+</div>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📋 Descripción
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Proyecto de evaluación académica (SENA) enfocado en el manejo de relaciones de base de datos con Eloquent ORM en Laravel 12. El dominio simulado es "GeoMarket", un contexto de marketplace geolocalizado usado como caso de estudio para practicar diseño relacional.
 
-## Learning Laravel
+## 🎯 Objetivos del ejercicio
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Este proyecto evalúa específicamente:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. **Migraciones**: creación de tablas con sus respectivas llaves foráneas.
+2. **Relaciones a nivel de modelo**: definición de relaciones Eloquent (`belongsTo`, `hasMany`, etc.) entre los modelos del dominio GeoMarket.
+3. **Verificación de relaciones**: pruebas de las relaciones a través de un `OrmController` dedicado, que expone el resultado de las consultas relacionales.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+No es una aplicación de producto terminada — es un ejercicio dirigido a demostrar dominio técnico de Eloquent y diseño de base de datos relacional.
 
-## Laravel Sponsors
+## 🛠️ Stack tecnológico
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+**Backend**
+- Laravel 12.0
+- PHP ^8.2
+- Composer
 
-### Premium Partners
+**Frontend**
+- Blade (vistas)
+- Tailwind CSS 4.0
+- Vite 7.0.7
+- Axios 1.11
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+**Testing**
+- PHPUnit 11.5.3
+- Mockery
 
-## Contributing
+**Herramientas de desarrollo**
+- Laravel Pint (formateo de código)
+- Laravel Pail (monitoreo de logs)
+- Laravel Sail (contenedores Docker)
+- FakerPHP (datos de prueba)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 📦 Instalación
 
-## Code of Conduct
+```bash
+git clone https://github.com/Camilocostas/EvaluacionGeoMarket.git
+cd EvaluacionGeoMarket
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+composer install
+npm install
 
-## Security Vulnerabilities
+cp .env.example .env
+php artisan key:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Configura tu base de datos en `.env`, luego:
 
-## License
+```bash
+php artisan migrate
+npm run build
+php artisan serve
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+O, de forma más rápida, usando el script de Composer incluido:
+
+```bash
+composer setup
+```
+
+## 🔧 Desarrollo
+
+```bash
+composer dev     # Levanta servidor, queue, logs (pail) y npm en paralelo
+npm run dev      # Solo Vite con hot reload
+composer test    # Ejecutar tests con PHPUnit
+```
+
+## 🗂️ Estructura del proyecto
+
+```
+EvaluacionGeoMarket/
+├── app/            # Modelos, controladores (incluye OrmController)
+├── database/       # Migraciones y seeders
+├── resources/      # Vistas Blade y assets (CSS/JS)
+├── routes/         # Definición de rutas
+├── tests/          # Tests unitarios y de feature
+└── ...
+```
+
+## 🧪 Verificar las relaciones
+
+El `OrmController` es el punto central para comprobar que las relaciones entre modelos funcionan correctamente. Revisa `app/Http/Controllers/OrmController.php` y las rutas asociadas para ver las consultas relacionales en acción.
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
+
+## 📞 Contacto
+
+Repositorio: [Camilocostas/EvaluacionGeoMarket](https://github.com/Camilocostas/EvaluacionGeoMarket)
